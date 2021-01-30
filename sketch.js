@@ -143,8 +143,8 @@ function startMenu() {
   text('SETTINGS', windowWidth / 2 - 82, windowHeight / 2 + 55);
   textSize(40 - 18);
   text('INSTRUCTIONS', windowWidth / 2 - 90, windowHeight / 2 - 50);
-  text('Press F11 to go Fullscreen', windowWidth / 2 - 144, windowHeight / 2 + 200);
-  text('Laptop users: zoom your browser out to 67%', windowWidth / 2 - 250, windowHeight / 2 + 250);
+  text('Laptop users: zoom your browser out to 67%', windowWidth / 2 - 240, windowHeight / 2 + 175);
+  text('Press F11 to go fullscreen', windowWidth / 2 - 140, windowHeight / 2 + 235);
   image(blueAngelFlipped, windowWidth / 2 - 1000, 300);
   image(blueAngel, windowWidth / 2 + 140, 300);
 
