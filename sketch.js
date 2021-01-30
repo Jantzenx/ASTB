@@ -15,7 +15,7 @@ let throtRunningAvg = 0;
 let throtRunningTotal = 0;
 let samples = 0
 
-let timer = 10;
+let timer = 30;
 let timeBuffer = timer;
 
 let ax = 0;
@@ -39,6 +39,8 @@ let cueCorrect = 0;
 let cueState = 0;
 let dontReact = 0;
 let needClick = 0;
+
+let firstStart = true;
 
 function preload() {
 
@@ -141,8 +143,8 @@ function startMenu() {
   text('SETTINGS', windowWidth / 2 - 82, windowHeight / 2 + 55);
   textSize(40 - 18);
   text('INSTRUCTIONS', windowWidth / 2 - 90, windowHeight / 2 - 50);
-  text('Press F11 to go Fullscreen', windowWidth / 2 - 144, windowHeight / 2 + 300);
-  text('Laptop users: zoom your browser out to 67%', windowWidth / 2 - 250, windowHeight / 2 + 350);
+  text('Press F11 to go Fullscreen', windowWidth / 2 - 144, windowHeight / 2 + 200);
+  text('Laptop users: zoom your browser out to 67%', windowWidth / 2 - 250, windowHeight / 2 + 250);
   image(blueAngelFlipped, windowWidth / 2 - 1000, 300);
   image(blueAngel, windowWidth / 2 + 140, 300);
 
@@ -370,14 +372,23 @@ function draw() {
   }
 
   if (menuOption == 0) {
+    firstStart = true;
     startMenu();
   } else if (menuOption == 2) {
     instructMenu();
   } else if (menuOption == 3) {
     settingsMenu();
   } else if (menuOption == 1) {
+    
+    if(firstStart == true)
+      {
+    squareX = windowWidth/2;
+    squareY = windowHeight/2;
+    firstStart = false;
+      }
     playGame();
   } else if (menuOption == 5) {
+    firstStart = true;
     gameOver();
   }
 
@@ -394,7 +405,7 @@ function playGame() {
     timer = timeBuffer;
     return;
   }
-
+  
   textAlign(LEFT);
   requestPointerLock();
   noCursor();
@@ -403,7 +414,7 @@ function playGame() {
   rect(20, 100, 70, windowHeight - 200);
   strokeWeight(3);
   stroke("#013993");
-
+  
   if (keyCode == BACKSPACE) {
     keyCode = DELETE;
 
