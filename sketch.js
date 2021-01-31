@@ -99,7 +99,12 @@ function setup() {
   r3 = random(2, 5);
   barX = 50;
   barY = windowHeight - 400;
-  throtY = windowHeight - 150
+  throtY = windowHeight - 150;
+  
+  if(!!navigator.getGamepads)
+  {
+    console.log(navigator.getGamepads);
+  }
 }
 
 function windowResized() {
