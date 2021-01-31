@@ -505,7 +505,7 @@ function playGame() {
   }
 
   squareY = squareY + (-movedY);
-  squareX = squareX + (-movedX);
+  squareX = squareX + (movedX);
 
   if (y < 150) {
     ax = random(-10, 10);
