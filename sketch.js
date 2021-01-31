@@ -101,9 +101,10 @@ function setup() {
   barY = windowHeight - 400;
   throtY = windowHeight - 150;
   
-  if(!!navigator.getGamepads)
+  if(!!navigator.getGamepads())
   {
-    console.log(navigator.getGamepads);
+    console.log("KUUUURRRP");
+    console.log(navigator.getGamepads());
   }
 }
 
