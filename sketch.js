@@ -74,6 +74,19 @@ function preload() {
   nineLeft = loadSound('assets/9_Left.mp3');
   nineRight = loadSound('assets/9_Right.mp3');
 
+  aLeft = loadSound('assets/A_Left.mp3');
+  aRight = loadSound('assets/A_Right.mp3');
+  bLeft = loadSound('assets/B_Left.mp3');
+  bRight = loadSound('assets/B_Right.mp3');
+  cLeft = loadSound('assets/C_Left.mp3');
+  cRight = loadSound('assets/C_Right.mp3');
+  dLeft = loadSound('assets/D_Left.mp3');
+  dRight = loadSound('assets/D_Right.mp3');
+  eLeft = loadSound('assets/E_Left.mp3');
+  eRight = loadSound('assets/E_Right.mp3');
+  fLeft = loadSound('assets/F_Left.mp3');
+  fRight = loadSound('assets/F_Right.mp3');
+
   leftEven = [twoLeft, fourLeft, sixLeft, eightLeft];
 
   leftOdd = [oneLeft, threeLeft, fiveLeft, sevenLeft, nineLeft];
@@ -81,6 +94,9 @@ function preload() {
   rightEven = [twoRight, fourRight, sixRight, eightRight];
 
   rightOdd = [oneRight, threeRight, fiveRight, sevenRight, nineRight];
+
+  leftDistract = [aLeft, bLeft, cLeft, dLeft, eLeft, fLeft];
+  rightDistract = [aRight, bRight, cRight, dRight, eRight, fRight];
 
 }
 
@@ -450,27 +466,33 @@ function playGame() {
       let cue;
       let evenIndex = floor(random(0, 3.99));
       let oddIndex = floor(random(0, 4.99));
+      let distractIndex = floor(random(0,5.99));
 
 
       if (array == 0) {
         cueState = 1;
         cue = leftEven[evenIndex];
+        distraction = rightDistract[distractIndex];
         needClick = 1;
       } else if (array == 1) {
         cueState = 2;
         cue = leftOdd[oddIndex];
+        distraction = rightDistract[distractIndex];
       } else if (array == 2) {
         cueState = 3;
         cue = rightEven[evenIndex];
+        distraction = leftDistract[distractIndex];
       } else if (array == 3) {
         cueState = 4;
         cue = rightOdd[oddIndex];
+        distraction = leftDistract[distractIndex];
         needClick = 1;
       }
 
 
       cueTotal++;
       cue.play();
+      distraction.play();
       cueCorrect++;
     }
   }
@@ -481,19 +503,19 @@ function playGame() {
 
 
   if (sqrt(pow(x - squareX, 2) + (pow(y - squareY, 2))) <= 40) {
-    image(greenTarget, x, y, 50, 50);
+    image(greenTarget, squareX, squareY, 50, 50);
   } else {
-    image(target, x, y, 50, 50);
+    image(target, squareX, squareY, 50, 50);
   }
 
   if (abs(barY - throtY) <= 40) {
-    image(greenTarget, barX - 20, barY, 50, 50);
+    image(greenTarget, barX - 17, throtY, 50, 50)
   } else {
-    image(target, barX - 20, barY, 50, 50);
+    image(target, barX - 17, throtY, 50, 50)
   }
 
-  image(jet, squareX, squareY, 85, 37.5);
-  image(jet, barX - 27, throtY, 68, 30)
+  image(jet, x, y, 85, 37.5);
+  image(jet, barX - 20, barY, 51, 22.5);
 
   fill('#e4ac00')
   textSize(35);
