@@ -481,19 +481,19 @@ function playGame() {
 
 
   if (sqrt(pow(x - squareX, 2) + (pow(y - squareY, 2))) <= 40) {
-    image(greenTarget, x, y, 50, 50);
+    image(greenTarget, squareX, squareY, 50, 50);
   } else {
-    image(target, x, y, 50, 50);
+    image(target, squareX, squareY, 50, 50);
   }
 
   if (abs(barY - throtY) <= 40) {
-    image(greenTarget, barX - 20, barY, 50, 50);
+    image(greenTarget, barX - 17, throtY, 50, 50)
   } else {
-    image(target, barX - 20, barY, 50, 50);
+    image(target, barX - 17, throtY, 50, 50)
   }
 
-  image(jet, squareX, squareY, 85, 37.5);
-  image(jet, barX - 27, throtY, 68, 30)
+  image(jet, x, y, 85, 37.5);
+  image(jet, barX - 20, barY, 51, 22.5);
 
   fill('#e4ac00')
   textSize(35);
